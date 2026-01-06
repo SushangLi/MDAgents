@@ -1,0 +1,802 @@
+[
+  {
+    "sample_id": "Periodontitis_001",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912665"
+  },
+  {
+    "sample_id": "Periodontitis_002",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912691"
+  },
+  {
+    "sample_id": "Periodontitis_003",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912709"
+  },
+  {
+    "sample_id": "Periodontitis_004",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912724"
+  },
+  {
+    "sample_id": "Periodontitis_005",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912745"
+  },
+  {
+    "sample_id": "Periodontitis_006",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912757"
+  },
+  {
+    "sample_id": "Periodontitis_007",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912768"
+  },
+  {
+    "sample_id": "Periodontitis_008",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912780"
+  },
+  {
+    "sample_id": "Periodontitis_009",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912791"
+  },
+  {
+    "sample_id": "Periodontitis_010",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912802"
+  },
+  {
+    "sample_id": "Periodontitis_011",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912813"
+  },
+  {
+    "sample_id": "Periodontitis_012",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912824"
+  },
+  {
+    "sample_id": "Periodontitis_013",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912834"
+  },
+  {
+    "sample_id": "Periodontitis_014",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912845"
+  },
+  {
+    "sample_id": "Periodontitis_015",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912856"
+  },
+  {
+    "sample_id": "Periodontitis_016",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912866"
+  },
+  {
+    "sample_id": "Periodontitis_017",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912877"
+  },
+  {
+    "sample_id": "Periodontitis_018",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912888"
+  },
+  {
+    "sample_id": "Periodontitis_019",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912898"
+  },
+  {
+    "sample_id": "Periodontitis_020",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912909"
+  },
+  {
+    "sample_id": "Periodontitis_021",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912919"
+  },
+  {
+    "sample_id": "Periodontitis_022",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912930"
+  },
+  {
+    "sample_id": "Periodontitis_023",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912940"
+  },
+  {
+    "sample_id": "Periodontitis_024",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912951"
+  },
+  {
+    "sample_id": "Periodontitis_025",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Periodontitis",
+    "timestamp": "2026-01-06T17:33:17.912962"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_001",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.912972"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_002",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.912982"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_003",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.912993"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_004",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913003"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_005",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913014"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_006",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913024"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_007",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913034"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_008",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913045"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_009",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913055"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_010",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913066"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_011",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913076"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_012",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913086"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_013",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913097"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_014",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913107"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_015",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913117"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_016",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913128"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_017",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913138"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_018",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913148"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_019",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913159"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_020",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913169"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_021",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913179"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_022",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913189"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_023",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913199"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_024",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913210"
+  },
+  {
+    "sample_id": "Diabetes_Associated_Dysbiosis_025",
+    "diagnosis": "Diabetes_Associated_Dysbiosis",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Diabetes_Associated_Dysbiosis",
+    "timestamp": "2026-01-06T17:33:17.913220"
+  },
+  {
+    "sample_id": "Healthy_001",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913231"
+  },
+  {
+    "sample_id": "Healthy_002",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913241"
+  },
+  {
+    "sample_id": "Healthy_003",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913251"
+  },
+  {
+    "sample_id": "Healthy_004",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913265"
+  },
+  {
+    "sample_id": "Healthy_005",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913275"
+  },
+  {
+    "sample_id": "Healthy_006",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913286"
+  },
+  {
+    "sample_id": "Healthy_007",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913296"
+  },
+  {
+    "sample_id": "Healthy_008",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913306"
+  },
+  {
+    "sample_id": "Healthy_009",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913316"
+  },
+  {
+    "sample_id": "Healthy_010",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913326"
+  },
+  {
+    "sample_id": "Healthy_011",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913336"
+  },
+  {
+    "sample_id": "Healthy_012",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913346"
+  },
+  {
+    "sample_id": "Healthy_013",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913356"
+  },
+  {
+    "sample_id": "Healthy_014",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913367"
+  },
+  {
+    "sample_id": "Healthy_015",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913377"
+  },
+  {
+    "sample_id": "Healthy_016",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913392"
+  },
+  {
+    "sample_id": "Healthy_017",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913402"
+  },
+  {
+    "sample_id": "Healthy_018",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913412"
+  },
+  {
+    "sample_id": "Healthy_019",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913422"
+  },
+  {
+    "sample_id": "Healthy_020",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913433"
+  },
+  {
+    "sample_id": "Healthy_021",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913443"
+  },
+  {
+    "sample_id": "Healthy_022",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913453"
+  },
+  {
+    "sample_id": "Healthy_023",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913464"
+  },
+  {
+    "sample_id": "Healthy_024",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913478"
+  },
+  {
+    "sample_id": "Healthy_025",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Healthy",
+    "timestamp": "2026-01-06T17:33:17.913492"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_001",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913506"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_002",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913518"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_003",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913529"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_004",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913539"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_005",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913549"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_006",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913559"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_007",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913569"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_008",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913579"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_009",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913589"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_010",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913600"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_011",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913609"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_012",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913620"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_013",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913630"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_014",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913640"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_015",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913650"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_016",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913660"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_017",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913670"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_018",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913680"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_019",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913690"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_020",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913700"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_021",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913710"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_022",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913720"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_023",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913730"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_024",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913740"
+  },
+  {
+    "sample_id": "Oral_Cancer_Risk_025",
+    "diagnosis": "Oral_Cancer_Risk",
+    "annotator": "synthetic_data",
+    "confidence": 1.0,
+    "notes": "Synthetic sample for Oral_Cancer_Risk",
+    "timestamp": "2026-01-06T17:33:17.913750"
+  }
+]
