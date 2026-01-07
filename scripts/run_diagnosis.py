@@ -117,12 +117,30 @@ class OralMultiomicsDiagnosisSystem:
         if enable_rag:
             try:
                 self.rag_system = RAGSystem()
-                # 添加示例文献（如果知识库为空）
-                if self.rag_system.vector_store.count() == 0:
-                    self._initialize_sample_literature()
+                literature_dir = project_root / "data" / "knowledge_base" / "medical_literature"
+
+                # 检查向量库是否为空
+                doc_count = self.rag_system.vector_store.count()
+                if doc_count == 0:
+                    print(f"  Vector store empty. Scanning for PDFs...")
+
+                    # 优先加载真实PDF文献
+                    if literature_dir.exists() and list(literature_dir.glob("*.pdf")):
+                        print(f"  Found PDFs in {literature_dir}")
+                        self._load_pdf_literature(literature_dir)
+                    else:
+                        # 回退到示例文献
+                        print(f"  No PDFs found in {literature_dir}")
+                        print(f"  Using sample literature...")
+                        self._initialize_sample_literature()
+                else:
+                    print(f"  ✓ Vector store contains {doc_count} documents")
+
             except Exception as e:
                 print(f"  ⚠ RAG初始化失败: {e}")
-                print(f"  使用空RAG系统")
+                import traceback
+                traceback.print_exc()
+                print(f"  Continuing without RAG...")
                 self.rag_system = None
         else:
             print("  RAG已禁用")
@@ -334,6 +352,73 @@ class OralMultiomicsDiagnosisSystem:
             "report_path": str(report_path),
             "debate_result": debate_result
         }
+
+    def _load_pdf_literature(self, literature_dir: Path):
+        """
+        自动加载PDF文献到RAG系统
+
+        Args:
+            literature_dir: PDF文献所在目录
+        """
+        try:
+            # 1. 检查PyPDF2依赖
+            try:
+                import PyPDF2
+                print("  ✓ PyPDF2 available")
+            except ImportError:
+                print("  ⚠ PyPDF2 not installed. Install with: pip install PyPDF2")
+                print("  Falling back to sample literature...")
+                self._initialize_sample_literature()
+                return
+
+            # 2. 导入LiteratureIngester
+            try:
+                from scripts.knowledge_base.ingest_literature import LiteratureIngester
+                print("  ✓ LiteratureIngester imported")
+            except ImportError as e:
+                print(f"  ⚠ Failed to import LiteratureIngester: {e}")
+                print("  Falling back to sample literature...")
+                self._initialize_sample_literature()
+                return
+
+            # 3. 创建ingester
+            ingester = LiteratureIngester(
+                rag_system=self.rag_system,
+                chunk_size=500,
+                chunk_overlap=50
+            )
+            print("  ✓ LiteratureIngester created")
+
+            # 4. 扫描并导入PDF文件
+            print(f"  Ingesting PDFs from {literature_dir}...")
+            results = ingester.ingest_directory(
+                directory_path=str(literature_dir),
+                pattern="*.pdf"
+            )
+
+            # 5. 统计和日志
+            if results:
+                total_chunks = sum(len(ids) for ids in results.values() if ids)
+                successful_files = sum(1 for ids in results.values() if ids)
+
+                if total_chunks > 0:
+                    print(f"  ✓ Successfully loaded {successful_files} PDFs ({total_chunks} chunks)")
+                    print(f"  ✓ Vector store now contains {self.rag_system.vector_store.count()} documents")
+                else:
+                    print(f"  ⚠ No chunks extracted from PDFs")
+                    print(f"  Falling back to sample literature...")
+                    self._initialize_sample_literature()
+            else:
+                print(f"  ⚠ No PDFs processed")
+                print(f"  Falling back to sample literature...")
+                self._initialize_sample_literature()
+
+        except Exception as e:
+            print(f"  ⚠ PDF loading failed: {e}")
+            import traceback
+            traceback.print_exc()
+            print(f"  Falling back to sample literature...")
+            self._initialize_sample_literature()
 
     def _initialize_sample_literature(self):
         """初始化示例医学文献"""

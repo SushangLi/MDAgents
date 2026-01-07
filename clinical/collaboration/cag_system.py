@@ -312,13 +312,34 @@ class CAGSystem:
         proteome_features = None
 
         if "microbiome" in sample_data:
-            microbiome_features = sample_data["microbiome"].to_dict()
+            data = sample_data["microbiome"]
+            # If DataFrame (multiple rows), use first row only
+            if isinstance(data, pd.DataFrame):
+                if len(data) > 0:
+                    microbiome_features = data.iloc[0].to_dict()
+            else:
+                # Series (single row)
+                microbiome_features = data.to_dict()
 
         if "metabolome" in sample_data:
-            metabolome_features = sample_data["metabolome"].to_dict()
+            data = sample_data["metabolome"]
+            # If DataFrame (multiple rows), use first row only
+            if isinstance(data, pd.DataFrame):
+                if len(data) > 0:
+                    metabolome_features = data.iloc[0].to_dict()
+            else:
+                # Series (single row)
+                metabolome_features = data.to_dict()
 
         if "proteome" in sample_data:
-            proteome_features = sample_data["proteome"].to_dict()
+            data = sample_data["proteome"]
+            # If DataFrame (multiple rows), use first row only
+            if isinstance(data, pd.DataFrame):
+                if len(data) > 0:
+                    proteome_features = data.iloc[0].to_dict()
+            else:
+                # Series (single row)
+                proteome_features = data.to_dict()
 
         # Build clinical notes from expert opinions
         clinical_notes = self._build_notes_from_opinions(conflicting_opinions)

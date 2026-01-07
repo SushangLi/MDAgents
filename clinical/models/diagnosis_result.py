@@ -59,10 +59,10 @@ class DiagnosisResult:
     diagnosis: str
     confidence: float
     expert_opinions: List[ExpertOpinion]
-    conflict_resolution: Optional[ConflictResolution]
     key_biomarkers: List[Dict[str, Any]]
     clinical_recommendations: List[str]
     explanation: str
+    conflict_resolution: Optional[ConflictResolution] = None
     references: List[Dict[str, Any]] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())

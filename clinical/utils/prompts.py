@@ -9,14 +9,115 @@ from typing import List, Dict, Any
 from clinical.models.expert_opinion import ExpertOpinion
 
 
+# Request Parser System Prompt
+REQUEST_PARSER_SYSTEM_PROMPT = """You are a diagnostic configuration parser for a multi-omics clinical diagnosis system.
+
+Your role is to parse natural language user requests into structured JSON configuration.
+
+Extract the following from user requests:
+
+1. **Omics Types**: Which omics data to analyze
+   - Options: "microbiome", "metabolome", "proteome"
+   - Can be a subset or all three
+   - Default: all three
+
+2. **Patient Selection**: Which patients to analyze
+   - Specific patient IDs (e.g., "P001", "P002", ["P001", "P002", "P003"])
+   - Patient ranges (e.g., "P001-P005" → ["P001", "P002", "P003", "P004", "P005"])
+   - null = all patients
+
+3. **Row Range**: Which rows of data to analyze
+   - Specific range (e.g., "first 50 rows" → [0, 50], "rows 100-200" → [100, 200])
+   - null = all rows
+
+4. **RAG/CAG Control**:
+   - enable_rag: Enable literature search (default: true)
+   - enable_cag: Enable case retrieval (default: true)
+   - force_rag_even_no_conflict: Force RAG even without conflicts (default: false)
+
+5. **Debate Parameters**:
+   - max_debate_rounds: Maximum debate rounds 1-10 (default: 3)
+   - confidence_threshold: Confidence threshold 0-1 (default: 0.7)
+   - threshold_adjustment: Adjustment per round 0-1 (default: 0.1)
+
+6. **Report Configuration**:
+   - detail_level: "brief" | "standard" | "detailed" (default: "standard")
+   - bilingual: true | false (default: true)
+
+Output ONLY valid JSON with this exact structure:
+{
+  "omics_types": ["microbiome", "metabolome", "proteome"],
+  "patient_ids": null,
+  "row_range": null,
+  "enable_rag": true,
+  "enable_cag": true,
+  "force_rag_even_no_conflict": false,
+  "max_debate_rounds": 3,
+  "confidence_threshold": 0.7,
+  "threshold_adjustment": 0.1,
+  "detail_level": "standard",
+  "bilingual": true
+}
+
+Examples:
+
+Request: "只分析微生物组数据"
+Output: {"omics_types": ["microbiome"], "patient_ids": null, "row_range": null, ...}
+
+Request: "分析病人P001的代谢组"
+Output: {"omics_types": ["metabolome"], "patient_ids": ["P001"], "row_range": null, ...}
+
+Request: "分析前50行数据"
+Output: {"omics_types": ["microbiome", "metabolome", "proteome"], "patient_ids": null, "row_range": [0, 50], ...}
+
+Request: "分析病人P001-P003，使用文献支持即使无冲突"
+Output: {"omics_types": ["microbiome", "metabolome", "proteome"], "patient_ids": ["P001", "P002", "P003"], "row_range": null, "force_rag_even_no_conflict": true, ...}
+
+Request: "快速诊断，简要报告"
+Output: {"omics_types": ["microbiome", "metabolome", "proteome"], "max_debate_rounds": 1, "detail_level": "brief", ...}
+
+Request: "3轮辩论，详细报告"
+Output: {"max_debate_rounds": 3, "detail_level": "detailed", ...}
+
+CRITICAL: Output ONLY the JSON object, no other text."""
+
+
+def build_request_parsing_prompt(user_request: str) -> str:
+    """
+    Build prompt for parsing user's natural language request.
+
+    Args:
+        user_request: User's natural language diagnostic request
+
+    Returns:
+        Formatted prompt string
+    """
+    return f"""Parse this diagnostic request into JSON configuration:
+
+User Request: {user_request}
+
+Remember to output ONLY the JSON object following the exact structure specified in the system prompt.
+Fill in all fields with appropriate values based on the request, using defaults for unspecified parameters."""
+
+
 # CMO System Prompt
 CMO_SYSTEM_PROMPT = """You are a Chief Medical Officer (CMO) in a multi-omics clinical diagnosis system.
+
+**CRITICAL: Generate all outputs in bilingual format (Chinese | English).**
+
+Format: 中文内容 | English content
+
+Examples:
+- 诊断结果 | Diagnosis
+- 牙周炎 | Periodontitis
+- 红复合体细菌升高 | Elevated red complex bacteria
+- 建议进一步检查 | Recommend further examination
 
 Your role is to:
 1. Analyze expert opinions from microbiome, metabolome, and proteome specialists
 2. Resolve conflicts between experts using medical literature and clinical cases
 3. Provide evidence-based diagnostic decisions with clear reasoning chains
-4. Generate comprehensive clinical reports
+4. Generate comprehensive clinical reports in bilingual format
 
 Key principles:
 - Prioritize patient safety and diagnostic accuracy
@@ -24,12 +125,15 @@ Key principles:
 - Consider all expert perspectives and biomarker evidence
 - Be transparent about uncertainty and limitations
 - Provide actionable recommendations
+- **ALWAYS use bilingual format (Chinese | English) in all outputs**
 
 You have access to:
 - Expert opinions with confidence scores and feature importance
 - Medical literature (via RAG system)
 - Historical clinical cases (via CAG cache)
 - Multi-omics biomarker data
+
+Remember: All diagnoses, explanations, recommendations, and reasoning must be provided in both Chinese and English using the | separator.
 """
 
 
@@ -145,6 +249,192 @@ def build_conflict_resolution_prompt(
     prompt_parts.append("6. **Differential Diagnoses**: Other diagnoses considered and why they were ruled out")
     prompt_parts.append("7. **Recommendations**: Clinical recommendations and next steps")
     prompt_parts.append("8. **Limitations**: Uncertainties and limitations in this diagnosis\n")
+
+    return "\n".join(prompt_parts)
+
+
+def build_cmo_cot_decision_prompt(
+    expert_opinions: List[ExpertOpinion],
+    debate_rounds: int,
+    threshold_history: List[Dict[str, Any]],
+    rag_context: Any = None,
+    cag_context: Any = None,
+    patient_metadata: Dict[str, Any] = None
+) -> str:
+    """
+    Build Chain-of-Thought prompt for CMO final decision.
+
+    Forces CMO to use explicit reasoning steps and show its thinking process.
+
+    Args:
+        expert_opinions: List of expert opinions
+        debate_rounds: Number of debate rounds completed
+        threshold_history: History of threshold adjustments per round
+        rag_context: Context from RAG literature search
+        cag_context: Context from CAG case retrieval
+        patient_metadata: Optional patient metadata
+
+    Returns:
+        Formatted CoT prompt string
+    """
+    prompt_parts = []
+
+    # System instruction for CoT
+    prompt_parts.append("# CRITICAL: You MUST use Chain-of-Thought (CoT) reasoning\n")
+    prompt_parts.append("Think step-by-step and show your complete reasoning process.\n")
+
+    # Patient info
+    if patient_metadata:
+        prompt_parts.append("## Patient Information")
+        for key, value in patient_metadata.items():
+            prompt_parts.append(f"- {key}: {value}")
+        prompt_parts.append("")
+
+    # Debate summary
+    prompt_parts.append(f"## Debate Summary\n")
+    prompt_parts.append(f"**Total Rounds**: {debate_rounds}")
+    prompt_parts.append(f"**Experts Consulted**: {len(expert_opinions)}\n")
+
+    # Show debate evolution
+    if threshold_history:
+        prompt_parts.append("### Debate Evolution (Round-by-Round Changes)\n")
+        for round_data in threshold_history:
+            round_num = round_data.get("round", 0)
+            prompt_parts.append(f"**Round {round_num}**:")
+            expert_ops = round_data.get("expert_opinions", [])
+
+            # Group by diagnosis
+            diagnosis_counts = {}
+            for op in expert_ops:
+                diag = op.get("diagnosis", "Unknown")
+                diagnosis_counts[diag] = diagnosis_counts.get(diag, 0) + 1
+
+            for diag, count in diagnosis_counts.items():
+                prompt_parts.append(f"  - {diag}: {count} expert(s)")
+            prompt_parts.append("")
+
+    # Current expert opinions
+    prompt_parts.append("## Current Expert Opinions\n")
+
+    # Group by omics type
+    by_omics = {}
+    for opinion in expert_opinions:
+        omics = opinion.omics_type
+        if omics not in by_omics:
+            by_omics[omics] = []
+        by_omics[omics].append(opinion)
+
+    for omics_type, opinions in by_omics.items():
+        prompt_parts.append(f"### {omics_type.title()} Experts ({len(opinions)} opinions)\n")
+
+        # Show diagnosis distribution
+        diagnosis_dist = {}
+        for op in opinions:
+            diag = op.diagnosis
+            diagnosis_dist[diag] = diagnosis_dist.get(diag, [])
+            diagnosis_dist[diag].append(op.probability)
+
+        for diag, probs in diagnosis_dist.items():
+            avg_prob = sum(probs) / len(probs)
+            prompt_parts.append(
+                f"- **{diag}**: {len(probs)}/{len(opinions)} experts "
+                f"(avg probability: {avg_prob:.1%})"
+            )
+
+        # Show key biomarkers across this omics type
+        all_features = {}
+        for op in opinions:
+            for feat in op.top_features[:3]:
+                if feat.feature_name not in all_features:
+                    all_features[feat.feature_name] = {
+                        "count": 0,
+                        "total_importance": 0.0,
+                        "direction": feat.direction
+                    }
+                all_features[feat.feature_name]["count"] += 1
+                all_features[feat.feature_name]["total_importance"] += feat.importance_score
+
+        if all_features:
+            prompt_parts.append("\n**Key Biomarkers Identified**:")
+            sorted_features = sorted(
+                all_features.items(),
+                key=lambda x: x[1]["total_importance"],
+                reverse=True
+            )[:5]
+
+            for feat_name, feat_data in sorted_features:
+                avg_importance = feat_data["total_importance"] / feat_data["count"]
+                prompt_parts.append(
+                    f"  - {feat_name} ({feat_data['direction']}regulated): "
+                    f"mentioned by {feat_data['count']} expert(s), "
+                    f"avg importance: {avg_importance:.3f}"
+                )
+
+        prompt_parts.append("")
+
+    # External evidence
+    if rag_context:
+        prompt_parts.append("## Medical Literature Evidence (RAG)\n")
+        prompt_parts.append(str(rag_context))
+        prompt_parts.append("")
+
+    if cag_context:
+        prompt_parts.append("## Similar Historical Cases (CAG)\n")
+        prompt_parts.append(str(cag_context))
+        prompt_parts.append("")
+
+    # CoT instructions
+    prompt_parts.append("## Your Task: Make Final Diagnosis Using Chain-of-Thought\n")
+    prompt_parts.append("You MUST follow this step-by-step reasoning format:\n")
+
+    prompt_parts.append("### Step 1: Analyze Expert Consensus")
+    prompt_parts.append("- What is the overall expert consensus across all omics types?")
+    prompt_parts.append("- Are there any conflicts between omics types?")
+    prompt_parts.append("- Did expert opinions change during debate rounds?")
+    prompt_parts.append("- What is the confidence level of each expert group?\n")
+
+    prompt_parts.append("### Step 2: Evaluate Biomarker Evidence")
+    prompt_parts.append("- Which biomarkers are most consistently identified?")
+    prompt_parts.append("- Are there contradictory biomarker signals?")
+    prompt_parts.append("- How do biomarkers support or refute each diagnosis?\n")
+
+    prompt_parts.append("### Step 3: Integrate External Evidence")
+    prompt_parts.append("- How does medical literature support each diagnosis?")
+    prompt_parts.append("- What do similar historical cases suggest?")
+    prompt_parts.append("- Are there any novel findings that literature doesn't cover?\n")
+
+    prompt_parts.append("### Step 4: Consider Alternatives")
+    prompt_parts.append("- What other diagnoses were considered?")
+    prompt_parts.append("- Why were they ruled out?")
+    prompt_parts.append("- What is the strength of evidence against alternatives?\n")
+
+    prompt_parts.append("### Step 5: Weigh Evidence")
+    prompt_parts.append("- How much weight should each omics type receive?")
+    prompt_parts.append("- How should conflicting signals be resolved?")
+    prompt_parts.append("- What is the final confidence based on all evidence?\n")
+
+    prompt_parts.append("### Step 6: Reach Final Conclusion")
+    prompt_parts.append("- State your final diagnosis")
+    prompt_parts.append("- Provide confidence score (0-1)")
+    prompt_parts.append("- Summarize the key reasoning for this decision\n")
+
+    prompt_parts.append("## Output Format\n")
+    prompt_parts.append("Provide your response as a JSON object with the following structure:")
+    prompt_parts.append("```json")
+    prompt_parts.append("{")
+    prompt_parts.append('  "step1_consensus_analysis": "...",')
+    prompt_parts.append('  "step2_biomarker_evaluation": "...",')
+    prompt_parts.append('  "step3_external_evidence": "...",')
+    prompt_parts.append('  "step4_alternatives": "...",')
+    prompt_parts.append('  "step5_evidence_weighting": "...",')
+    prompt_parts.append('  "step6_final_diagnosis": "...",')
+    prompt_parts.append('  "final_diagnosis": "disease_name",')
+    prompt_parts.append('  "confidence": 0.85,')
+    prompt_parts.append('  "reasoning_chain": ["reason 1", "reason 2", "reason 3"]')
+    prompt_parts.append("}")
+    prompt_parts.append("```\n")
+
+    prompt_parts.append("CRITICAL: You MUST show your reasoning for each step. Do not skip steps.")
 
     return "\n".join(prompt_parts)
 

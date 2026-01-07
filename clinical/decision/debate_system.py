@@ -82,7 +82,8 @@ class DebateSystem:
         conflict_resolver: Optional[ConflictResolver] = None,
         rag_system: Optional[RAGSystem] = None,
         cag_system: Optional[CAGSystem] = None,
-        config: Optional[DebateConfig] = None
+        config: Optional[DebateConfig] = None,
+        llm_wrapper: Optional[Any] = None
     ):
         """
         Initialize debate system.
@@ -92,11 +93,13 @@ class DebateSystem:
             rag_system: RAG system for literature search
             cag_system: CAG system for case retrieval
             config: Debate configuration
+            llm_wrapper: LLM wrapper for CMO reasoning (optional)
         """
         self.conflict_resolver = conflict_resolver or ConflictResolver()
         self.rag_system = rag_system
         self.cag_system = cag_system
         self.config = config or DebateConfig()
+        self.llm_wrapper = llm_wrapper
 
         # Build state graph
         self.graph = self._build_debate_graph()
@@ -332,42 +335,169 @@ class DebateSystem:
         return state
 
     def _final_decision_node(self, state: DebateState) -> DebateState:
-        """Make final decision using CMO reasoning."""
-        print("\n[Node] Making final decision...")
+        """Make final decision using CMO reasoning with Chain-of-Thought."""
+        print("\n[Node] Making final decision (CMO CoT reasoning)...")
 
         # If already resolved in quick decision, skip
         if state.get("final_diagnosis"):
             print("  Decision already made")
             return state
 
-        # Use weighted diagnosis with all evidence
-        final_diagnosis = self.conflict_resolver.get_weighted_diagnosis(
-            state["expert_opinions"]
+        # Import CoT prompt builder
+        from clinical.utils.prompts import build_cmo_cot_decision_prompt
+        import json
+
+        # Build CoT prompt
+        cot_prompt = build_cmo_cot_decision_prompt(
+            expert_opinions=state["expert_opinions"],
+            debate_rounds=state["current_round"],
+            threshold_history=state.get("threshold_history", []),
+            rag_context=state.get("rag_context"),
+            cag_context=state.get("cag_context"),
+            patient_metadata=state.get("patient_metadata", {})
         )
 
-        # Calculate confidence based on evidence
-        avg_confidence = state["conflict_analysis"].avg_confidence
+        # Call LLM for CoT reasoning (if available)
+        cot_response = None
+        cot_response_raw = None
+        if hasattr(self, 'llm_wrapper') and self.llm_wrapper:
+            try:
+                print("  → Calling LLM for Chain-of-Thought reasoning...")
 
-        # Build reasoning chain
-        reasoning = [
-            f"Completed {state['current_round']} rounds of debate",
-            f"Expert opinions analyzed with threshold adjustments",
-        ]
+                # Convert prompt to messages format and call async
+                import asyncio
+                messages = [{"role": "user", "content": cot_prompt}]
 
-        if state.get("rag_context"):
-            reasoning.append("Medical literature evidence reviewed")
+                # Run async call synchronously
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                try:
+                    response_dict = loop.run_until_complete(
+                        self.llm_wrapper.call(messages=messages, temperature=0.3)
+                    )
+                    cot_response_raw = response_dict.get("content", "")
+                finally:
+                    loop.close()
 
-        if state.get("cag_context"):
-            reasoning.append("Similar historical cases considered")
+                print(f"  → LLM returned {len(cot_response_raw)} characters")
 
-        reasoning.append(f"Final diagnosis: {final_diagnosis} (confidence: {avg_confidence:.1%})")
+                # Save raw response for debugging
+                try:
+                    from pathlib import Path
+                    import datetime
+                    debug_dir = Path("data/debug_logs")
+                    debug_dir.mkdir(parents=True, exist_ok=True)
+                    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                    debug_file = debug_dir / f"cmo_cot_response_{timestamp}.txt"
+                    with open(debug_file, "w", encoding="utf-8") as f:
+                        f.write("=== CMO CoT Prompt ===\n")
+                        f.write(cot_prompt)
+                        f.write("\n\n=== CMO CoT Response ===\n")
+                        f.write(cot_response_raw)
+                    print(f"  → Debug log saved to: {debug_file}")
+                except Exception as debug_error:
+                    print(f"  ⚠ Failed to save debug log: {debug_error}")
+
+                # Try to parse JSON response
+                try:
+                    # Extract JSON from code block if present
+                    if "```json" in cot_response_raw:
+                        json_start = cot_response_raw.find("```json") + 7
+                        json_end = cot_response_raw.find("```", json_start)
+                        json_str = cot_response_raw[json_start:json_end].strip()
+                        print("  → Extracted JSON from code block")
+                    elif "{" in cot_response_raw and "}" in cot_response_raw:
+                        json_start = cot_response_raw.find("{")
+                        json_end = cot_response_raw.rfind("}") + 1
+                        json_str = cot_response_raw[json_start:json_end]
+                        print("  → Extracted JSON from raw text")
+                    else:
+                        json_str = cot_response_raw
+                        print("  → Using raw response as JSON")
+
+                    cot_response = json.loads(json_str)
+                    print("  ✓ CMO CoT reasoning completed successfully")
+
+                    # Validate expected fields
+                    required_fields = ["final_diagnosis", "confidence"]
+                    missing_fields = [f for f in required_fields if f not in cot_response]
+                    if missing_fields:
+                        print(f"  ⚠ Warning: Missing required fields: {missing_fields}")
+
+                except json.JSONDecodeError as e:
+                    print(f"  ✗ Failed to parse CMO response as JSON: {e}")
+                    print(f"  → Response preview (first 500 chars):")
+                    print(f"     {cot_response_raw[:500]}")
+                    print(f"  → Check debug log for full response")
+                    cot_response = None
+            except Exception as e:
+                print(f"  ✗ LLM call failed: {e}")
+                import traceback
+                print(f"  → Traceback:")
+                traceback.print_exc()
+                cot_response = None
+
+        # Extract diagnosis and reasoning from CoT response
+        if cot_response:
+            final_diagnosis = cot_response.get("final_diagnosis")
+            confidence = cot_response.get("confidence", 0.0)
+
+            # Build detailed reasoning chain from CoT steps
+            reasoning = []
+
+            if cot_response.get("step1_consensus_analysis"):
+                reasoning.append(f"**Expert Consensus Analysis**: {cot_response['step1_consensus_analysis']}")
+
+            if cot_response.get("step2_biomarker_evaluation"):
+                reasoning.append(f"**Biomarker Evaluation**: {cot_response['step2_biomarker_evaluation']}")
+
+            if cot_response.get("step3_external_evidence"):
+                reasoning.append(f"**External Evidence Integration**: {cot_response['step3_external_evidence']}")
+
+            if cot_response.get("step4_alternatives"):
+                reasoning.append(f"**Alternative Diagnoses Considered**: {cot_response['step4_alternatives']}")
+
+            if cot_response.get("step5_evidence_weighting"):
+                reasoning.append(f"**Evidence Weighting**: {cot_response['step5_evidence_weighting']}")
+
+            if cot_response.get("step6_final_diagnosis"):
+                reasoning.append(f"**Final Conclusion**: {cot_response['step6_final_diagnosis']}")
+
+            # Add additional reasoning chain items if provided
+            if cot_response.get("reasoning_chain"):
+                reasoning.extend(cot_response["reasoning_chain"])
+
+        else:
+            # Fallback: Use weighted diagnosis if LLM fails
+            print("  → Using fallback weighted diagnosis (LLM unavailable)")
+            final_diagnosis = self.conflict_resolver.get_weighted_diagnosis(
+                state["expert_opinions"]
+            )
+            avg_confidence = state["conflict_analysis"].avg_confidence
+            confidence = avg_confidence
+
+            # Build basic reasoning chain
+            reasoning = [
+                f"Completed {state['current_round']} rounds of debate",
+                f"Expert opinions analyzed with threshold adjustments",
+            ]
+
+            if state.get("rag_context"):
+                reasoning.append("Medical literature evidence reviewed")
+
+            if state.get("cag_context"):
+                reasoning.append("Similar historical cases considered")
+
+            reasoning.append(f"Weighted majority diagnosis: {final_diagnosis} (confidence: {confidence:.1%})")
 
         state["final_diagnosis"] = final_diagnosis
-        state["final_confidence"] = avg_confidence
+        state["final_confidence"] = confidence
         state["reasoning_chain"] = reasoning
+        state["cmo_cot_response"] = cot_response  # Store full CoT response for reporting
 
         print(f"  Final decision: {final_diagnosis}")
-        print(f"  Confidence: {avg_confidence:.1%}")
+        print(f"  Confidence: {confidence:.1%}")
+        print(f"  Reasoning steps: {len(reasoning)}")
 
         return state
 

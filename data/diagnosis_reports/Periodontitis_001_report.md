@@ -8,8 +8,8 @@
 - **Age**: 45
 - **Sex**: M
 - **True Diagnosis**: Periodontitis
-- **Report Date**: 2026-01-06T22:06:58.920196
-- **Report ID**: 5689613232
+- **Report Date**: 2026-01-07T11:06:39.231123
+- **Report ID**: 5826943392
 
 ---
 

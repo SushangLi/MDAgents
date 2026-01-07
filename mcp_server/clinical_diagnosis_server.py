@@ -57,12 +57,16 @@ _debate_system: Optional[DebateSystem] = None
 _cmo_coordinator: Optional[CMOCoordinator] = None
 _report_generator: Optional[ReportGenerator] = None
 _preprocessors: Optional[Dict[str, Any]] = None
+_request_parser: Optional[Any] = None  # RequestParser
+_intelligent_debate_system: Optional[Any] = None  # IntelligentDebateSystem
+_bilingual_report_generator: Optional[Any] = None  # BilingualReportGenerator
 
 
 def _initialize_systems():
     """Initialize all clinical diagnosis systems."""
     global _model_manager, _rag_system, _cag_system, _debate_system
     global _cmo_coordinator, _report_generator, _preprocessors
+    global _request_parser, _intelligent_debate_system, _bilingual_report_generator
 
     if _model_manager is not None:
         return  # Already initialized
@@ -109,6 +113,44 @@ def _initialize_systems():
 
     # Initialize report generator
     _report_generator = ReportGenerator()
+
+    # Initialize new intelligent components
+    try:
+        from clinical.decision.request_parser import RequestParser
+        from clinical.decision.intelligent_debate_system import IntelligentDebateSystem
+        from clinical.decision.bilingual_report_generator import BilingualReportGenerator
+        from clinical.decision.llm_wrapper import create_llm_wrapper
+
+        # Create LLM wrapper for RequestParser
+        llm_wrapper = create_llm_wrapper(use_mock=False)
+
+        # Initialize RequestParser
+        _request_parser = RequestParser(llm_call_func=llm_wrapper.call)
+
+        # Initialize BilingualReportGenerator
+        _bilingual_report_generator = BilingualReportGenerator(
+            include_metadata=True,
+            include_expert_details=True,
+            include_biomarkers=True
+        )
+
+        # Initialize IntelligentDebateSystem
+        _intelligent_debate_system = IntelligentDebateSystem(
+            request_parser=_request_parser,
+            preprocessors=_preprocessors,
+            experts={},  # Will load experts dynamically
+            bilingual_generator=_bilingual_report_generator,
+            rag_system=_rag_system,
+            cag_system=_cag_system,
+            config=DebateConfig(max_rounds=3, threshold_adjustment=0.1)
+        )
+
+        logger.info("✓ Intelligent scheduling components initialized")
+    except Exception as e:
+        logger.warning(f"Intelligent components initialization failed: {e}")
+        _request_parser = None
+        _intelligent_debate_system = None
+        _bilingual_report_generator = None
 
     logger.info("✓ Clinical diagnosis systems initialized")
 
@@ -266,6 +308,104 @@ async def list_tools() -> list[Tool]:
                 "type": "object",
                 "properties": {}
             }
+        ),
+        Tool(
+            name="diagnose_with_natural_language",
+            description=(
+                "Intelligent diagnosis using natural language request. "
+                "Parse user's natural language to determine which omics data to analyze, "
+                "which patients to include, data row ranges, RAG/CAG settings, etc. "
+                "Supports requests like: '分析病人P001的微生物组数据' or "
+                "'analyze first 50 rows with literature support'."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "natural_request": {
+                        "type": "string",
+                        "description": "Natural language diagnostic request"
+                    },
+                    "data_file_path": {
+                        "type": "string",
+                        "description": "Path to omics data file (CSV/Excel)"
+                    },
+                    "patient_metadata": {
+                        "type": "object",
+                        "description": "Optional patient metadata (age, gender, etc.)"
+                    }
+                },
+                "required": ["natural_request", "data_file_path"]
+            }
+        ),
+        Tool(
+            name="configure_diagnosis",
+            description=(
+                "Diagnosis with structured configuration (no NL parsing). "
+                "Allows precise control over omics selection, patient filtering, "
+                "row ranges, RAG/CAG settings, debate parameters, and report options."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "data_file_path": {
+                        "type": "string",
+                        "description": "Path to omics data file (CSV/Excel)"
+                    },
+                    "omics_types": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Which omics to analyze: microbiome, metabolome, proteome"
+                    },
+                    "patient_ids": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Specific patient IDs to analyze (null for all)"
+                    },
+                    "row_range": {
+                        "type": "array",
+                        "items": {"type": "integer"},
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "description": "Data row range [start, end] (null for all)"
+                    },
+                    "enable_rag": {
+                        "type": "boolean",
+                        "description": "Enable literature search",
+                        "default": True
+                    },
+                    "enable_cag": {
+                        "type": "boolean",
+                        "description": "Enable case retrieval",
+                        "default": True
+                    },
+                    "force_rag_even_no_conflict": {
+                        "type": "boolean",
+                        "description": "Force RAG even without conflicts",
+                        "default": False
+                    },
+                    "max_debate_rounds": {
+                        "type": "integer",
+                        "description": "Maximum debate rounds (1-10)",
+                        "default": 3
+                    },
+                    "report_detail_level": {
+                        "type": "string",
+                        "enum": ["brief", "standard", "detailed"],
+                        "description": "Report detail level",
+                        "default": "standard"
+                    },
+                    "bilingual": {
+                        "type": "boolean",
+                        "description": "Generate bilingual report (Chinese | English)",
+                        "default": True
+                    },
+                    "patient_metadata": {
+                        "type": "object",
+                        "description": "Optional patient metadata"
+                    }
+                },
+                "required": ["data_file_path"]
+            }
         )
     ]
 
@@ -299,6 +439,14 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         elif name == "get_system_status":
             result = _get_system_status()
             return [TextContent(type="text", text=json.dumps(result, indent=2))]
+
+        elif name == "diagnose_with_natural_language":
+            result = await _diagnose_with_nl(arguments)
+            return [TextContent(type="text", text=result)]
+
+        elif name == "configure_diagnosis":
+            result = await _diagnose_with_config(arguments)
+            return [TextContent(type="text", text=result)]
 
         else:
             return [TextContent(
@@ -545,6 +693,211 @@ def _get_system_status() -> dict:
         status["components"]["cag_stats"] = cag_stats
 
     return status
+
+
+async def _diagnose_with_nl(args: dict) -> str:
+    """
+    Diagnose using natural language request.
+
+    Args:
+        args: Arguments with natural_request, data_file_path, and optional patient_metadata
+
+    Returns:
+        Bilingual diagnostic report
+    """
+    import pandas as pd
+    from pathlib import Path
+
+    if not _intelligent_debate_system:
+        return json.dumps({
+            "error": "Intelligent debate system not initialized",
+            "hint": "Check system initialization logs"
+        })
+
+    logger.info(f"Natural language diagnosis: {args.get('natural_request', 'N/A')}")
+
+    # Load data file
+    data_path = Path(args["data_file_path"])
+    if not data_path.exists():
+        return json.dumps({"error": f"Data file not found: {data_path}"})
+
+    try:
+        if data_path.suffix == ".csv":
+            data_df = pd.read_csv(data_path)
+        elif data_path.suffix in [".xlsx", ".xls"]:
+            data_df = pd.read_excel(data_path)
+        else:
+            return json.dumps({"error": f"Unsupported file format: {data_path.suffix}"})
+    except Exception as e:
+        return json.dumps({"error": f"Failed to load data: {str(e)}"})
+
+    # Prepare available_data (all omics data from file)
+    available_data = {}
+
+    # Assume columns follow naming convention: microbiome_*, metabolome_*, proteome_*
+    microbiome_cols = [col for col in data_df.columns if col.startswith("microbiome_") or col.startswith("Bacteria")]
+    metabolome_cols = [col for col in data_df.columns if col.startswith("metabolome_") or col.startswith("Metabolite")]
+    proteome_cols = [col for col in data_df.columns if col.startswith("proteome_") or col.startswith("Protein")]
+
+    if microbiome_cols:
+        available_data["microbiome"] = data_df[microbiome_cols]
+    if metabolome_cols:
+        available_data["metabolome"] = data_df[metabolome_cols]
+    if proteome_cols:
+        available_data["proteome"] = data_df[proteome_cols]
+
+    # If no omics columns found, try loading all numeric columns
+    if not available_data:
+        numeric_cols = data_df.select_dtypes(include=['number']).columns.tolist()
+        if numeric_cols:
+            # Split into thirds as a fallback
+            third = len(numeric_cols) // 3
+            available_data["microbiome"] = data_df[numeric_cols[:third]]
+            available_data["metabolome"] = data_df[numeric_cols[third:2*third]]
+            available_data["proteome"] = data_df[numeric_cols[2*third:]]
+
+    # Prepare initial state
+    initial_state = {
+        "user_request": args["natural_request"],
+        "available_data": available_data,
+        "patient_metadata": args.get("patient_metadata", {}),
+        "current_round": 0,
+        "max_rounds": 3,
+        "threshold_adjustment": 0.1,
+        "debate_history": [],
+        "threshold_history": [],
+        "conflict_analysis": None,
+        "rag_context": None,
+        "cag_context": None,
+        "final_diagnosis": None,
+        "final_confidence": None,
+        "reasoning_chain": None,
+        "requires_debate": False,
+        "requires_rag": False,
+        "requires_cag": False,
+        "debate_resolved": False,
+        "force_rag_even_no_conflict": False,
+        "report_detail_level": "standard",
+        "bilingual": True,
+        "bilingual_report": None
+    }
+
+    # Run intelligent diagnosis
+    try:
+        final_state = _intelligent_debate_system.run_intelligent_diagnosis(
+            user_request=args["natural_request"],
+            available_data=available_data,
+            patient_metadata=args.get("patient_metadata", {})
+        )
+
+        # Return bilingual report
+        return final_state.get("bilingual_report", "Report generation failed")
+
+    except Exception as e:
+        logger.error(f"Intelligent diagnosis failed: {e}", exc_info=True)
+        return json.dumps({
+            "error": f"Diagnosis failed: {str(e)}",
+            "request": args.get("natural_request", "N/A")
+        })
+
+
+async def _diagnose_with_config(args: dict) -> str:
+    """
+    Diagnose with structured configuration (no NL parsing).
+
+    Args:
+        args: Arguments with structured configuration
+
+    Returns:
+        Bilingual diagnostic report
+    """
+    import pandas as pd
+    from pathlib import Path
+    from clinical.models.diagnosis_config import DiagnosisConfig
+
+    if not _intelligent_debate_system:
+        return json.dumps({
+            "error": "Intelligent debate system not initialized",
+            "hint": "Check system initialization logs"
+        })
+
+    logger.info("Structured configuration diagnosis")
+
+    # Load data file
+    data_path = Path(args["data_file_path"])
+    if not data_path.exists():
+        return json.dumps({"error": f"Data file not found: {data_path}"})
+
+    try:
+        if data_path.suffix == ".csv":
+            data_df = pd.read_csv(data_path)
+        elif data_path.suffix in [".xlsx", ".xls"]:
+            data_df = pd.read_excel(data_path)
+        else:
+            return json.dumps({"error": f"Unsupported file format: {data_path.suffix}"})
+    except Exception as e:
+        return json.dumps({"error": f"Failed to load data: {str(e)}"})
+
+    # Filter by patient_ids if specified
+    if args.get("patient_ids"):
+        if "patient_id" in data_df.columns:
+            data_df = data_df[data_df["patient_id"].isin(args["patient_ids"])]
+        else:
+            logger.warning("patient_ids specified but no 'patient_id' column in data")
+
+    # Filter by row_range if specified
+    if args.get("row_range"):
+        start, end = args["row_range"]
+        data_df = data_df.iloc[start:end]
+
+    # Prepare available_data
+    available_data = {}
+
+    # Extract omics data based on column names
+    microbiome_cols = [col for col in data_df.columns if col.startswith("microbiome_") or col.startswith("Bacteria")]
+    metabolome_cols = [col for col in data_df.columns if col.startswith("metabolome_") or col.startswith("Metabolite")]
+    proteome_cols = [col for col in data_df.columns if col.startswith("proteome_") or col.startswith("Protein")]
+
+    if microbiome_cols:
+        available_data["microbiome"] = data_df[microbiome_cols]
+    if metabolome_cols:
+        available_data["metabolome"] = data_df[metabolome_cols]
+    if proteome_cols:
+        available_data["proteome"] = data_df[proteome_cols]
+
+    # Build DiagnosisConfig
+    config = DiagnosisConfig(
+        omics_types=args.get("omics_types", ["microbiome", "metabolome", "proteome"]),
+        patient_ids=args.get("patient_ids"),
+        row_range=tuple(args["row_range"]) if args.get("row_range") else None,
+        enable_rag=args.get("enable_rag", True),
+        enable_cag=args.get("enable_cag", True),
+        force_rag_even_no_conflict=args.get("force_rag_even_no_conflict", False),
+        max_debate_rounds=args.get("max_debate_rounds", 3),
+        confidence_threshold=args.get("confidence_threshold", 0.7),
+        threshold_adjustment=args.get("threshold_adjustment", 0.1),
+        detail_level=args.get("report_detail_level", "standard"),
+        bilingual=args.get("bilingual", True)
+    )
+
+    # Run intelligent diagnosis with pre-parsed config
+    try:
+        final_state = _intelligent_debate_system.run_intelligent_diagnosis(
+            user_request=None,  # Skip NL parsing
+            available_data=available_data,
+            patient_metadata=args.get("patient_metadata", {}),
+            parsed_config=config
+        )
+
+        # Return bilingual report
+        return final_state.get("bilingual_report", "Report generation failed")
+
+    except Exception as e:
+        logger.error(f"Configured diagnosis failed: {e}", exc_info=True)
+        return json.dumps({
+            "error": f"Diagnosis failed: {str(e)}",
+            "config": str(config)
+        })
 
 
 async def main():

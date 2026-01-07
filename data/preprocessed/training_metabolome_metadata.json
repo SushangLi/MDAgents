@@ -1,0 +1,16 @@
+{
+  "omics_type": "metabolome",
+  "data_source": "training",
+  "raw_data_path": "/Users/ljy/Developer/github/momoai/MDAgents/data/training/metabolome_raw.csv",
+  "original_shape": [
+    90,
+    7
+  ],
+  "preprocessed_shape": [
+    90,
+    7
+  ],
+  "preprocessing_timestamp": "2026-01-07T12:57:01.081794",
+  "feature_count": 7,
+  "sample_count": 90
+}

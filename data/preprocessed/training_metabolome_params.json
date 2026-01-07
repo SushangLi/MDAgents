@@ -1,0 +1,44 @@
+{
+  "omics_type": "metabolome",
+  "missing_value_strategy": "median",
+  "outlier_threshold": 3.0,
+  "normalization_method": "zscore",
+  "feature_names": [
+    "Butyrate",
+    "Propionate",
+    "Lactate",
+    "Glucose",
+    "GABA",
+    "Acetate",
+    "Succinate"
+  ],
+  "fill_values": {
+    "Butyrate": 47.63634103188464,
+    "Propionate": 53.736653469401475,
+    "Lactate": 52.59237599941001,
+    "Glucose": 53.100505138299226,
+    "GABA": 10.0,
+    "Acetate": 52.468237606997974,
+    "Succinate": 54.267674503329914
+  },
+  "normalization_params": {
+    "mean": {
+      "Butyrate": 668.3415734295057,
+      "Propionate": 706.1320341750622,
+      "Lactate": 704.2352178186927,
+      "Glucose": 652.7580849823267,
+      "GABA": 693.9068926722423,
+      "Acetate": 57.38757262080693,
+      "Succinate": 56.051022514733326
+    },
+    "std": {
+      "Butyrate": 1016.1759683990616,
+      "Propionate": 1023.1278614971869,
+      "Lactate": 1037.8151876846111,
+      "Glucose": 959.2502012914613,
+      "GABA": 1032.962345309805,
+      "Acetate": 20.83308153030888,
+      "Succinate": 16.419237531179558
+    }
+  }
+}

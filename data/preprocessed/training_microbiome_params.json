@@ -1,0 +1,27 @@
+{
+  "omics_type": "microbiome",
+  "missing_value_strategy": "zero",
+  "outlier_threshold": 3.0,
+  "normalization_method": "clr",
+  "feature_names": [
+    "Porphyromonas_gingivalis",
+    "Treponema_denticola",
+    "Prevotella_intermedia",
+    "Fusobacterium_nucleatum",
+    "Streptococcus_salivarius",
+    "Lactobacillus_reuteri",
+    "Veillonella_parvula",
+    "Actinomyces_naeslundii"
+  ],
+  "fill_values": {
+    "Porphyromonas_gingivalis": 0.0,
+    "Treponema_denticola": 0.0,
+    "Prevotella_intermedia": 0.0,
+    "Fusobacterium_nucleatum": 0.0,
+    "Streptococcus_salivarius": 0.0,
+    "Lactobacillus_reuteri": 0.0,
+    "Veillonella_parvula": 0.0,
+    "Actinomyces_naeslundii": 0.0
+  },
+  "normalization_params": {}
+}

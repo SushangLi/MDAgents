@@ -1,0 +1,16 @@
+{
+  "omics_type": "microbiome",
+  "data_source": "training",
+  "raw_data_path": "/Users/ljy/Developer/github/momoai/MDAgents/data/training/microbiome_raw.csv",
+  "original_shape": [
+    90,
+    8
+  ],
+  "preprocessed_shape": [
+    90,
+    8
+  ],
+  "preprocessing_timestamp": "2026-01-07T12:56:57.895559",
+  "feature_count": 8,
+  "sample_count": 90
+}
