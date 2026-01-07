@@ -1,0 +1,895 @@
+=== CMO CoT Prompt ===
+# CRITICAL: You MUST use Chain-of-Thought (CoT) reasoning
+
+Think step-by-step and show your complete reasoning process.
+
+## Debate Summary
+
+**Total Rounds**: 3
+**Experts Consulted**: 3
+
+### Debate Evolution (Round-by-Round Changes)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 1**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 2**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+**Round 3**:
+  - Periodontitis: 2 expert(s)
+  - Healthy: 1 expert(s)
+
+## Current Expert Opinions
+
+### Microbiome Experts (1 opinions)
+
+- **Periodontitis**: 1/1 experts (avg probability: 0.0%)
+
+**Key Biomarkers Identified**:
+  - Prevotella_intermedia (downregulated): mentioned by 1 expert(s), avg importance: 0.113
+  - Porphyromonas_gingivalis (downregulated): mentioned by 1 expert(s), avg importance: 0.093
+  - Treponema_denticola (downregulated): mentioned by 1 expert(s), avg importance: 0.093
+
+### Metabolome Experts (1 opinions)
+
+- **Healthy**: 1/1 experts (avg probability: 97.9%)
+
+**Key Biomarkers Identified**:
+  - Butyrate (upregulated): mentioned by 1 expert(s), avg importance: 2.488
+  - Succinate (downregulated): mentioned by 1 expert(s), avg importance: 0.000
+  - Acetate (downregulated): mentioned by 1 expert(s), avg importance: 0.000
+
+### Proteome Experts (1 opinions)
+
+- **Periodontitis**: 1/1 experts (avg probability: 21.0%)
+
+**Key Biomarkers Identified**:
+  - TNF (upregulated): mentioned by 1 expert(s), avg importance: 0.121
+  - CRP (downregulated): mentioned by 1 expert(s), avg importance: 0.106
+  - IL6 (downregulated): mentioned by 1 expert(s), avg importance: 0.105
+
+## Medical Literature Evidence (RAG)
+
+## Relevant Medical Literature
+
+
+## Similar Historical Cases (CAG)
+
+## Similar Historical Cases
+
+
+## Your Task: Make Final Diagnosis Using Chain-of-Thought
+
+You MUST follow this step-by-step reasoning format:
+
+### Step 1: Analyze Expert Consensus
+- What is the overall expert consensus across all omics types?
+- Are there any conflicts between omics types?
+- Did expert opinions change during debate rounds?
+- What is the confidence level of each expert group?
+
+### Step 2: Evaluate Biomarker Evidence
+- Which biomarkers are most consistently identified?
+- Are there contradictory biomarker signals?
+- How do biomarkers support or refute each diagnosis?
+
+### Step 3: Integrate External Evidence
+- How does medical literature support each diagnosis?
+- What do similar historical cases suggest?
+- Are there any novel findings that literature doesn't cover?
+
+### Step 4: Consider Alternatives
+- What other diagnoses were considered?
+- Why were they ruled out?
+- What is the strength of evidence against alternatives?
+
+### Step 5: Weigh Evidence
+- How much weight should each omics type receive?
+- How should conflicting signals be resolved?
+- What is the final confidence based on all evidence?
+
+### Step 6: Reach Final Conclusion
+- State your final diagnosis
+- Provide confidence score (0-1)
+- Summarize the key reasoning for this decision
+
+## Output Format
+
+Provide your response as a JSON object with the following structure:
+```json
+{
+  "step1_consensus_analysis": "...",
+  "step2_biomarker_evaluation": "...",
+  "step3_external_evidence": "...",
+  "step4_alternatives": "...",
+  "step5_evidence_weighting": "...",
+  "step6_final_diagnosis": "...",
+  "final_diagnosis": "disease_name",
+  "confidence": 0.85,
+  "reasoning_chain": ["reason 1", "reason 2", "reason 3"]
+}
+```
+
+CRITICAL: You MUST show your reasoning for each step. Do not skip steps.
+
+=== CMO CoT Response ===
+Let’s reason through this step-by-step.
+
+---
+
+### **Step 1: Analyze Expert Consensus**
+
+- **Overall expert consensus across omics types**:  
+  There are 3 experts total (1 microbiome, 1 metabolome, 1 proteome).  
+  - Microbiome expert → **Periodontitis** (probability 0.0% — note: this seems like a possible data error, but the diagnosis is Periodontitis).  
+  - Metabolome expert → **Healthy** (probability 97.9%).  
+  - Proteome expert → **Periodontitis** (probability 21.0%).  
+
+  So 2 out of 3 experts favor **Periodontitis**, but one (metabolome) strongly favors Healthy.
+
+- **Conflicts between omics types**:  
+  Yes — metabolome strongly suggests healthy state, while microbiome and proteome suggest periodontitis.
+
+- **Change during debate rounds**:  
+  The provided “Debate Evolution” section is repetitive and seems corrupted (many repeated “Round 1” and “Round 2” entries with identical counts: Periodontitis 2, Healthy 1). This suggests the final distribution (Periodontitis 2, Healthy 1) was stable across rounds.
+
+- **Confidence level of each expert group**:  
+  - Microbiome: low confidence (0.0% probability but diagnosis Periodontitis — maybe probability is for Healthy? Possibly a bug in reporting).  
+  - Metabolome: very high confidence (97.9%).  
+  - Proteome: low confidence (21.0% for Periodontitis, meaning 79% probability for Healthy if binary, but they still chose Periodontitis — again possibly a reporting quirk).
+
+---
+
+### **Step 2: Evaluate Biomarker Evidence**
+
+- **Most consistently identified biomarkers**:  
+  - For Periodontitis:  
+    Microbiome expert mentions *Prevotella intermedia*, *Porphyromonas gingivalis*, *Treponema denticola* — all **downregulated** (which is odd, as in periodontitis these pathogens are usually upregulated).  
+    Proteome expert mentions *TNF upregulated*, *CRP downregulated*, *IL6 downregulated* — TNF up fits inflammation, but CRP and IL6 down contradicts typical periodontitis (they should be upregulated).  
+  - For Healthy:  
+    Metabolome expert mentions *Butyrate upregulated* (anti-inflammatory, healthy sign), *Succinate downregulated*, *Acetate downregulated*.
+
+- **Contradictory biomarker signals**:  
+  Yes — microbiome biomarkers are down for pathogens (unexpected for periodontitis), proteome shows mixed inflammation signals (only TNF up), metabolome strongly suggests healthy.
+
+- **How biomarkers support/refute each diagnosis**:  
+  - Microbiome: downregulation of periodontitis pathogens → actually argues **against** periodontitis, yet expert still says Periodontitis.  
+  - Proteome: only TNF up, others down → mixed, not strongly inflammatory.  
+  - Metabolome: butyrate high → healthy state.
+
+---
+
+### **Step 3: Integrate External Evidence**
+
+- **Medical literature support**:  
+  No literature provided in the RAG section (empty).  
+  But from general knowledge:  
+  - Periodontitis: high levels of *P. gingivalis*, *T. denticola*, *P. intermedia*; elevated pro-inflammatory cytokines (TNF, IL-6, CRP); reduced butyrate in diseased sites.  
+  - Here, biomarkers contradict that except TNF.
+
+- **Similar historical cases**:  
+  No historical cases provided in CAG section (empty).
+
+- **Novel findings literature doesn’t cover**:  
+  The contradiction: experts diagnosing Periodontitis despite biomarkers pointing away from it might indicate a non-typical presentation or data/annotation errors in the input.
+
+---
+
+### **Step 4: Consider Alternatives**
+
+- **Other diagnoses considered**:  
+  Only “Periodontitis” vs “Healthy” in this debate.
+
+- **Why ruled out**:  
+  Not applicable — only two options.
+
+- **Strength of evidence against alternatives**:  
+  Metabolome evidence strongly favors Healthy; microbiome and proteome biomarkers also more consistent with Healthy than Periodontitis, yet their experts chose Periodontitis — possibly due to other unlisted biomarkers or clinical context not shown.
+
+---
+
+### **Step 5: Weigh Evidence**
+
+- **Weight to each omics type**:  
+  Metabolome has highest confidence (97.9%) and butyrate is a strong health indicator. Microbiome and proteome have low probabilities for Periodontitis (0.0% and 21.0%) — meaning even they are not confident.  
+  So despite 2 vs 1 expert count, their confidence scores undermine Periodontitis diagnosis.
+
+- **Resolving conflicting signals**:  
+  Trust the actual biomarker directions:  
+  Pathogens down, butyrate up, only TNF mildly up → points to **Healthy** with mild inflammation possibly.
+
+- **Final confidence based on all evidence**:  
+  Moderate-high for Healthy given metabolome strong signal and biomarker directions.
+
+---
+
+### **Step 6: Reach Final Conclusion**
+
+- **Final diagnosis**: Healthy  
+- **Confidence score**: 0.75  
+- **Key reasoning**:  
+  1. Metabolome expert strongly indicates Healthy with 97.9% probability and butyrate upregulation.  
+  2. Microbiome and proteome experts’ biomarker lists actually contradict periodontitis (pathogens down, CRP/IL6 down).  
+  3. Their low probability scores for Periodontitis (0.0%, 21.0%) suggest weak evidence for disease.
+
+---
+
+```json
+{
+  "step1_consensus_analysis": "2 out of 3 experts favor Periodontitis, but their confidence scores are very low (0.0% and 21.0%). Metabolome expert strongly favors Healthy (97.9%). Debate rounds show stable 2 vs 1 split but confidence scores contradict the diagnosis choice.",
+  "step2_biomarker_evaluation": "Biomarkers cited for Periodontitis experts actually contradict disease: pathogens downregulated, CRP/IL6 down. Only TNF up. Metabolome shows butyrate upregulated (healthy sign). Biomarker directions overall support Healthy state.",
+  "step3_external_evidence": "No medical literature or historical cases provided. General knowledge: periodontitis shows upregulation of cited pathogens and inflammatory markers, which is opposite here, supporting Healthy interpretation.",
+  "step4_alternatives": "Only Periodontitis vs Healthy considered. Evidence against Periodontitis is strong based on biomarker directions and high metabolome confidence for Healthy.",
+  "step5_evidence_weighting": "Weight metabolome heavily due to high confidence and butyrate importance. Microbiome/proteome biomarkers support Healthy despite expert's stated diagnosis. Conflict resolved by trusting biomarker directions over low-confidence expert labels.",
+  "step6_final_diagnosis": "Healthy",
+  "confidence": 0.75,
+  "reasoning_chain": [
+    "Metabolome expert shows 97.9% probability for Healthy with butyrate upregulated (strong health indicator).",
+    "Microbiome and proteome biomarkers (pathogens down, CRP/IL6 down) contradict periodontitis, aligning more with Healthy.",
+    "Low confidence scores of Periodontitis-favoring experts (0.0%, 21.0%) undermine their diagnosis choice."
+  ]
+}
+```
