@@ -1,0 +1,76 @@
+[
+  {
+    "case_id": "CASE_20260106_213949_0",
+    "patient_id": "P_HIST_001",
+    "diagnosis": "Periodontitis",
+    "microbiome_features": {
+      "Porphyromonas_gingivalis": 0.32,
+      "Treponema_denticola": 0.28,
+      "Tannerella_forsythia": 0.22,
+      "Fusobacterium_nucleatum": 0.18
+    },
+    "metabolome_features": {
+      "Butyrate": 0.25,
+      "Propionate": 0.2,
+      "IL6": 0.22
+    },
+    "proteome_features": {
+      "MMP8": 0.3,
+      "MMP9": 0.26,
+      "Cathepsin": 0.18
+    },
+    "clinical_notes": "45-year-old male patient with severe periodontitis. High levels of red complex bacteria detected. Significant alveolar bone loss observed. MMP-8 levels elevated at 45 ng/mL. Patient presents with deep periodontal pockets (6-8mm) and bleeding on probing.",
+    "diagnosis_date": "2026-01-06T21:39:49.595847",
+    "severity": "Severe",
+    "treatment_outcome": "Successful response to scaling, root planing, and adjunct antibiotic therapy. Pocket depths reduced to 3-4mm after 3 months.",
+    "metadata": {}
+  },
+  {
+    "case_id": "CASE_20260106_213949_1",
+    "patient_id": "P_HIST_002",
+    "diagnosis": "Periodontitis",
+    "microbiome_features": {
+      "Porphyromonas_gingivalis": 0.28,
+      "Aggregatibacter_actinomycetemcomitans": 0.24,
+      "Prevotella_intermedia": 0.2
+    },
+    "metabolome_features": {
+      "Butyrate": 0.22,
+      "IL6": 0.25,
+      "CRP": 0.2
+    },
+    "proteome_features": {
+      "MMP9": 0.28,
+      "Calprotectin": 0.24,
+      "S100A9": 0.2
+    },
+    "clinical_notes": "38-year-old female with moderate chronic periodontitis. Family history of periodontal disease. Clinical attachment loss 4-6mm. Radiographic evidence of horizontal bone loss. Elevated inflammatory markers.",
+    "diagnosis_date": "2026-01-06T21:39:49.596159",
+    "severity": "Moderate",
+    "treatment_outcome": "Good response to non-surgical periodontal therapy. Maintained with 3-month recall intervals.",
+    "metadata": {}
+  },
+  {
+    "case_id": "CASE_20260106_213949_2",
+    "patient_id": "P_HIST_003",
+    "diagnosis": "Gingivitis",
+    "microbiome_features": {
+      "Streptococcus_salivarius": 0.15,
+      "Fusobacterium_nucleatum": 0.12,
+      "Prevotella_melaninogenica": 0.1
+    },
+    "metabolome_features": {
+      "IL6": 0.15,
+      "PGE2": 0.12
+    },
+    "proteome_features": {
+      "IgA": 0.18,
+      "Lactoferrin": 0.15
+    },
+    "clinical_notes": "28-year-old patient with plaque-induced gingivitis. Gingival inflammation present but no attachment loss. No radiographic bone loss. Reversible condition with improved oral hygiene.",
+    "diagnosis_date": "2026-01-06T21:39:49.596247",
+    "severity": "Mild",
+    "treatment_outcome": "Complete resolution with professional prophylaxis and improved home care. No periodontal therapy required.",
+    "metadata": {}
+  }
+]

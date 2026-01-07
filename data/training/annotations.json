@@ -1,0 +1,722 @@
+[
+  {
+    "sample_id": "Periodontitis_001",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176071"
+  },
+  {
+    "sample_id": "Periodontitis_002",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176108"
+  },
+  {
+    "sample_id": "Periodontitis_003",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176126"
+  },
+  {
+    "sample_id": "Periodontitis_004",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176141"
+  },
+  {
+    "sample_id": "Periodontitis_005",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176153"
+  },
+  {
+    "sample_id": "Periodontitis_006",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176165"
+  },
+  {
+    "sample_id": "Periodontitis_007",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176177"
+  },
+  {
+    "sample_id": "Periodontitis_008",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176188"
+  },
+  {
+    "sample_id": "Periodontitis_009",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176201"
+  },
+  {
+    "sample_id": "Periodontitis_010",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176212"
+  },
+  {
+    "sample_id": "Periodontitis_011",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176223"
+  },
+  {
+    "sample_id": "Periodontitis_012",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176234"
+  },
+  {
+    "sample_id": "Periodontitis_013",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176245"
+  },
+  {
+    "sample_id": "Periodontitis_014",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176256"
+  },
+  {
+    "sample_id": "Periodontitis_015",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176267"
+  },
+  {
+    "sample_id": "Periodontitis_016",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176278"
+  },
+  {
+    "sample_id": "Periodontitis_017",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176289"
+  },
+  {
+    "sample_id": "Periodontitis_018",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176300"
+  },
+  {
+    "sample_id": "Periodontitis_019",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176311"
+  },
+  {
+    "sample_id": "Periodontitis_020",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176322"
+  },
+  {
+    "sample_id": "Periodontitis_021",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176332"
+  },
+  {
+    "sample_id": "Periodontitis_022",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176343"
+  },
+  {
+    "sample_id": "Periodontitis_023",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176353"
+  },
+  {
+    "sample_id": "Periodontitis_024",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176364"
+  },
+  {
+    "sample_id": "Periodontitis_025",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176375"
+  },
+  {
+    "sample_id": "Periodontitis_026",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176386"
+  },
+  {
+    "sample_id": "Periodontitis_027",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176397"
+  },
+  {
+    "sample_id": "Periodontitis_028",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176407"
+  },
+  {
+    "sample_id": "Periodontitis_029",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176418"
+  },
+  {
+    "sample_id": "Periodontitis_030",
+    "diagnosis": "Periodontitis",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Periodontitis features",
+    "timestamp": "2026-01-06T21:44:46.176428"
+  },
+  {
+    "sample_id": "Diabetes_001",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176440"
+  },
+  {
+    "sample_id": "Diabetes_002",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176450"
+  },
+  {
+    "sample_id": "Diabetes_003",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176461"
+  },
+  {
+    "sample_id": "Diabetes_004",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176472"
+  },
+  {
+    "sample_id": "Diabetes_005",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176482"
+  },
+  {
+    "sample_id": "Diabetes_006",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176493"
+  },
+  {
+    "sample_id": "Diabetes_007",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176503"
+  },
+  {
+    "sample_id": "Diabetes_008",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176513"
+  },
+  {
+    "sample_id": "Diabetes_009",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176524"
+  },
+  {
+    "sample_id": "Diabetes_010",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176534"
+  },
+  {
+    "sample_id": "Diabetes_011",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176545"
+  },
+  {
+    "sample_id": "Diabetes_012",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176556"
+  },
+  {
+    "sample_id": "Diabetes_013",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176566"
+  },
+  {
+    "sample_id": "Diabetes_014",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176576"
+  },
+  {
+    "sample_id": "Diabetes_015",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176586"
+  },
+  {
+    "sample_id": "Diabetes_016",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176597"
+  },
+  {
+    "sample_id": "Diabetes_017",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176607"
+  },
+  {
+    "sample_id": "Diabetes_018",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176617"
+  },
+  {
+    "sample_id": "Diabetes_019",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176628"
+  },
+  {
+    "sample_id": "Diabetes_020",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176638"
+  },
+  {
+    "sample_id": "Diabetes_021",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176649"
+  },
+  {
+    "sample_id": "Diabetes_022",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176659"
+  },
+  {
+    "sample_id": "Diabetes_023",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176669"
+  },
+  {
+    "sample_id": "Diabetes_024",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176680"
+  },
+  {
+    "sample_id": "Diabetes_025",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176691"
+  },
+  {
+    "sample_id": "Diabetes_026",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176701"
+  },
+  {
+    "sample_id": "Diabetes_027",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176712"
+  },
+  {
+    "sample_id": "Diabetes_028",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176722"
+  },
+  {
+    "sample_id": "Diabetes_029",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176733"
+  },
+  {
+    "sample_id": "Diabetes_030",
+    "diagnosis": "Diabetes",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Diabetes features",
+    "timestamp": "2026-01-06T21:44:46.176743"
+  },
+  {
+    "sample_id": "Healthy_001",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176753"
+  },
+  {
+    "sample_id": "Healthy_002",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176764"
+  },
+  {
+    "sample_id": "Healthy_003",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176774"
+  },
+  {
+    "sample_id": "Healthy_004",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176784"
+  },
+  {
+    "sample_id": "Healthy_005",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176794"
+  },
+  {
+    "sample_id": "Healthy_006",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176805"
+  },
+  {
+    "sample_id": "Healthy_007",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176816"
+  },
+  {
+    "sample_id": "Healthy_008",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176826"
+  },
+  {
+    "sample_id": "Healthy_009",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176836"
+  },
+  {
+    "sample_id": "Healthy_010",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176847"
+  },
+  {
+    "sample_id": "Healthy_011",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176857"
+  },
+  {
+    "sample_id": "Healthy_012",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176867"
+  },
+  {
+    "sample_id": "Healthy_013",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176878"
+  },
+  {
+    "sample_id": "Healthy_014",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176888"
+  },
+  {
+    "sample_id": "Healthy_015",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176898"
+  },
+  {
+    "sample_id": "Healthy_016",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176909"
+  },
+  {
+    "sample_id": "Healthy_017",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176919"
+  },
+  {
+    "sample_id": "Healthy_018",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176930"
+  },
+  {
+    "sample_id": "Healthy_019",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176940"
+  },
+  {
+    "sample_id": "Healthy_020",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176951"
+  },
+  {
+    "sample_id": "Healthy_021",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176961"
+  },
+  {
+    "sample_id": "Healthy_022",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176971"
+  },
+  {
+    "sample_id": "Healthy_023",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176981"
+  },
+  {
+    "sample_id": "Healthy_024",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.176992"
+  },
+  {
+    "sample_id": "Healthy_025",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.177002"
+  },
+  {
+    "sample_id": "Healthy_026",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.177012"
+  },
+  {
+    "sample_id": "Healthy_027",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.177022"
+  },
+  {
+    "sample_id": "Healthy_028",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.177033"
+  },
+  {
+    "sample_id": "Healthy_029",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.177043"
+  },
+  {
+    "sample_id": "Healthy_030",
+    "diagnosis": "Healthy",
+    "annotator": "synthetic_obvious_features",
+    "confidence": 1.0,
+    "notes": "Synthetic sample with obvious Healthy features",
+    "timestamp": "2026-01-06T21:44:46.177053"
+  }
+]

@@ -319,5 +319,98 @@ def test_system_readiness():
     print(f"{'='*60}")
 
 
+# ===== LLM Performance Tests =====
+
+@pytest.fixture
+def llm_wrapper_real():
+    """Real LLM wrapper (if API key available)."""
+    import os
+    from clinical.decision.llm_wrapper import create_llm_wrapper
+    return create_llm_wrapper(use_mock=False)
+
+
+@pytest.mark.asyncio
+@pytest.mark.skipif(
+    not os.getenv("DEEPSEEK_API_KEY"),
+    reason="No DEEPSEEK_API_KEY found"
+)
+async def test_llm_performance(llm_wrapper_real):
+    """
+    Test real LLM performance metrics.
+
+    Tests:
+    - Response time < 30 seconds
+    - Token usage > 0
+    - Valid content returned
+    """
+    import time
+
+    messages = [
+        {"role": "system", "content": "You are a medical diagnostic assistant."},
+        {"role": "user", "content": "Diagnose: High P. gingivalis, elevated MMP-9, moderate IL-6"}
+    ]
+
+    print("\n" + "=" * 70)
+    print("LLM Performance Test")
+    print("=" * 70)
+
+    start = time.time()
+    response = await llm_wrapper_real.call(messages, temperature=0.3)
+    elapsed = time.time() - start
+
+    print(f"\n✓ LLM Response:")
+    print(f"  Provider: {response['provider']}")
+    print(f"  Model: {response['model']}")
+    print(f"  Tokens: {response['tokens_used']}")
+    print(f"  Latency: {elapsed:.2f}s")
+    print(f"  Content length: {len(response['content'])} chars")
+
+    # Assertions
+    assert elapsed < 30, f"LLM call took too long: {elapsed:.2f}s"
+    assert response['tokens_used'] > 0, "Should use tokens"
+    assert response['content'], "Should have content"
+    assert len(response['content']) > 50, "Content should be substantial"
+
+    print(f"\n✅ LLM Performance Test PASSED")
+    print(f"   Latency: {elapsed:.2f}s < 30s threshold")
+
+
+@pytest.mark.asyncio
+async def test_llm_mock_mode():
+    """Test LLM wrapper in mock mode (always runs)."""
+    from clinical.decision.llm_wrapper import create_llm_wrapper
+    import time
+
+    wrapper = create_llm_wrapper(use_mock=True)
+
+    messages = [
+        {"role": "system", "content": "You are a medical assistant."},
+        {"role": "user", "content": "Test diagnosis with Periodontitis markers"}
+    ]
+
+    print("\n" + "=" * 70)
+    print("LLM Mock Mode Test")
+    print("=" * 70)
+
+    start = time.time()
+    response = await wrapper.call(messages, temperature=0.3)
+    elapsed = time.time() - start
+
+    print(f"\n✓ Mock Response:")
+    print(f"  Provider: {response['provider']}")
+    print(f"  Model: {response['model']}")
+    print(f"  Latency: {elapsed:.3f}s")
+    print(f"  Content length: {len(response['content'])} chars")
+
+    # Assertions
+    assert response['provider'] == 'mock', "Should be mock provider"
+    assert elapsed < 0.5, f"Mock should be fast, took {elapsed:.3f}s"
+    assert response['content'], "Should have content"
+    assert 'Periodontitis' in response['content'], "Should mention diagnosis from prompt"
+
+    print(f"\n✅ Mock Mode Test PASSED")
+    print(f"   Latency: {elapsed:.3f}s < 0.5s threshold")
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "-s"])

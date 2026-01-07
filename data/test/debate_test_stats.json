@@ -1,0 +1,13 @@
+{
+  "test_run": {
+    "timestamp": "2026-01-06T21:21:17.964355",
+    "mode": "real_llm",
+    "duration_seconds": 3.797776,
+    "exit_code": 0,
+    "status": "passed",
+    "available_api_keys": [
+      "DEEPSEEK_API_KEY",
+      "ANTHROPIC_API_KEY"
+    ]
+  }
+}

@@ -35,8 +35,8 @@ You have access to:
 
 def build_conflict_resolution_prompt(
     expert_opinions: List[ExpertOpinion],
-    rag_context: str = "",
-    cag_context: str = "",
+    rag_context: Any = None,
+    cag_context: Any = None,
     patient_metadata: Dict[str, Any] = None
 ) -> str:
     """
@@ -44,8 +44,8 @@ def build_conflict_resolution_prompt(
 
     Args:
         expert_opinions: List of expert opinions
-        rag_context: Context from RAG literature search
-        cag_context: Context from CAG case retrieval
+        rag_context: Context from RAG literature search (Dict or str)
+        cag_context: Context from CAG case retrieval (Dict or str)
         patient_metadata: Optional patient metadata
 
     Returns:
@@ -75,7 +75,7 @@ def build_conflict_resolution_prompt(
         for feature in opinion.top_features[:5]:
             prompt_parts.append(
                 f"- {feature.feature_name}: {feature.direction}regulated "
-                f"(importance: {feature.importance:.3f})"
+                f"(importance: {feature.importance_score:.3f})"
             )
 
         prompt_parts.append(f"\n**Biological Explanation**:")
@@ -90,13 +90,45 @@ def build_conflict_resolution_prompt(
     # RAG context
     if rag_context:
         prompt_parts.append("## Medical Literature Evidence\n")
-        prompt_parts.append(rag_context)
+        if isinstance(rag_context, dict):
+            # Format dictionary as readable string
+            documents = rag_context.get("documents", [])
+            for i, doc in enumerate(documents, 1):
+                prompt_parts.append(f"### Document {i}")
+                prompt_parts.append(f"**Source**: {doc.get('source', 'Unknown')}")
+                prompt_parts.append(f"**Title**: {doc.get('title', 'N/A')}")
+                prompt_parts.append(f"**Relevance Score**: {doc.get('score', 0.0):.2f}")
+                prompt_parts.append(f"**Content**: {doc.get('content', '')}")
+                if doc.get('url'):
+                    prompt_parts.append(f"**URL**: {doc.get('url')}")
+                prompt_parts.append("")
+        else:
+            # Already a string
+            prompt_parts.append(str(rag_context))
         prompt_parts.append("")
 
     # CAG context
     if cag_context:
         prompt_parts.append("## Similar Historical Cases\n")
-        prompt_parts.append(cag_context)
+        if isinstance(cag_context, dict):
+            # Format dictionary as readable string
+            similar_cases = cag_context.get("similar_cases", [])
+            for i, case in enumerate(similar_cases, 1):
+                prompt_parts.append(f"### Case {i}")
+                prompt_parts.append(f"**Case ID**: {case.get('case_id', 'Unknown')}")
+                prompt_parts.append(f"**Diagnosis**: {case.get('diagnosis', 'N/A')}")
+                prompt_parts.append(f"**Similarity Score**: {case.get('similarity', 0.0):.2f}")
+                prompt_parts.append(f"**Outcome**: {case.get('outcome', 'N/A')}")
+
+                key_features = case.get('key_features', {})
+                if key_features:
+                    prompt_parts.append("**Key Features**:")
+                    for feature_name, feature_value in key_features.items():
+                        prompt_parts.append(f"  - {feature_name}: {feature_value}")
+                prompt_parts.append("")
+        else:
+            # Already a string
+            prompt_parts.append(str(cag_context))
         prompt_parts.append("")
 
     # Task instructions

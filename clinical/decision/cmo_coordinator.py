@@ -46,6 +46,20 @@ class CMOCoordinator:
                           If None, requires manual prompt generation
             temperature: LLM temperature for reasoning
             use_mcp: Whether using MCP integration
+
+        Example usage:
+            from clinical.decision.llm_wrapper import create_llm_wrapper
+
+            # Auto mode (uses real LLM if API key available, else mock)
+            wrapper = create_llm_wrapper(use_mock=False)
+            cmo = CMOCoordinator(llm_call_func=wrapper.call, temperature=0.3)
+
+            # Force mock mode (for testing without API calls)
+            wrapper = create_llm_wrapper(use_mock=True)
+            cmo = CMOCoordinator(llm_call_func=wrapper.call)
+
+            # No LLM mode (uses fallback voting)
+            cmo = CMOCoordinator()  # llm_call_func=None
         """
         self.llm_call_func = llm_call_func
         self.temperature = temperature
@@ -95,7 +109,7 @@ class CMOCoordinator:
                 key_biomarkers.append({
                     "name": feature.feature_name,
                     "omics_type": opinion.omics_type,
-                    "importance": feature.importance,
+                    "importance": feature.importance_score,
                     "direction": feature.direction,
                     "description": f"{feature.direction}regulated in {opinion.omics_type}"
                 })
@@ -115,19 +129,18 @@ class CMOCoordinator:
             expert_opinions=expert_opinions,
             conflict_resolution=None,  # No conflict
             key_biomarkers=key_biomarkers,
-            reasoning_chain=reasoning_chain,
-            differential_diagnoses=[],
-            recommendations=[
+            clinical_recommendations=[
                 f"Confirmed diagnosis: {consensus_diagnosis}",
                 "Monitor patient progress",
                 "Follow standard treatment protocols"
             ],
-            rag_citations=[],
-            cag_similar_cases=[],
+            explanation=" ".join(reasoning_chain),
+            references=[],
             metadata={
                 "decision_type": "quick_consensus",
                 "conflict_detected": False,
-                "n_experts": len(expert_opinions)
+                "n_experts": len(expert_opinions),
+                "reasoning_chain": reasoning_chain
             }
         )
 
@@ -188,12 +201,12 @@ class CMOCoordinator:
 
         # Build conflict resolution record
         conflict_resolution = ConflictResolution(
-            conflict_types=[ct.value for ct in conflict_analysis.conflict_types],
-            debate_rounds=len(debate_history) if debate_history else 0,
-            rag_used=rag_context is not None,
-            cag_used=cag_context is not None,
-            resolution_method="cmo_llm_reasoning",
-            final_reasoning=diagnosis_data.get("reasoning_chain", [])
+            conflicts_detected=[ct.value for ct in conflict_analysis.conflict_types],
+            resolution_method="cmo_llm_reasoning" if llm_response.get("content") != "MANUAL_PROCESSING_REQUIRED" else "fallback_voting",
+            rag_evidence=self._format_rag_evidence(rag_context) if rag_context else [],
+            cag_cases=self._format_cag_cases(cag_context) if cag_context else [],
+            cmo_reasoning=diagnosis_data.get("reasoning", ""),
+            confidence_score=diagnosis_data.get("confidence", 0.0)
         )
 
         # Create diagnosis result
@@ -203,12 +216,14 @@ class CMOCoordinator:
             confidence=diagnosis_data["confidence"],
             expert_opinions=expert_opinions,
             conflict_resolution=conflict_resolution,
-            key_biomarkers=diagnosis_data.get("key_biomarkers", []),
-            reasoning_chain=diagnosis_data.get("reasoning_chain", []),
-            differential_diagnoses=diagnosis_data.get("differential_diagnoses", []),
-            recommendations=diagnosis_data.get("recommendations", []),
-            rag_citations=self._extract_rag_citations(rag_context) if rag_context else [],
-            cag_similar_cases=self._extract_cag_cases(cag_context) if cag_context else [],
+            key_biomarkers=self._extract_key_biomarkers(expert_opinions),
+            clinical_recommendations=diagnosis_data.get("recommendations", []),
+            explanation=diagnosis_data.get("explanation", "") or self._generate_default_explanation(
+                diagnosis_data["diagnosis"],
+                expert_opinions,
+                conflict_resolution
+            ),
+            references=self._extract_references(rag_context),
             metadata={
                 "decision_type": "conflict_resolution",
                 "conflict_detected": True,
@@ -354,7 +369,7 @@ class CMOCoordinator:
                 key_biomarkers.append({
                     "name": feature.feature_name,
                     "omics_type": opinion.omics_type,
-                    "importance": feature.importance,
+                    "importance": feature.importance_score,
                     "direction": feature.direction,
                     "description": f"{feature.direction}regulated in {opinion.omics_type}"
                 })
@@ -417,6 +432,111 @@ class CMOCoordinator:
                 "Manual review recommended"
             ]
         }
+
+    def _format_rag_evidence(self, rag_context: Optional[Dict]) -> List[Dict[str, Any]]:
+        """格式化RAG证据为ConflictResolution所需格式"""
+        if not rag_context:
+            return []
+
+        # Handle both string (formatted context) and dict (raw data) types
+        if isinstance(rag_context, str):
+            # Formatted markdown string from debate system - no structured data to extract
+            return []
+
+        documents = rag_context.get("documents", [])
+        return [{
+            "source": doc.get("source", "Unknown"),
+            "content": doc.get("content", ""),
+            "relevance_score": doc.get("score", 0.0)
+        } for doc in documents]
+
+    def _format_cag_cases(self, cag_context: Optional[Dict]) -> List[Dict[str, Any]]:
+        """格式化CAG案例为ConflictResolution所需格式"""
+        if not cag_context:
+            return []
+
+        # Handle both string (formatted context) and dict (raw data) types
+        if isinstance(cag_context, str):
+            # Formatted markdown string from debate system - no structured data to extract
+            return []
+
+        similar_cases = cag_context.get("similar_cases", [])
+        return [{
+            "case_id": case.get("case_id", "Unknown"),
+            "diagnosis": case.get("diagnosis", ""),
+            "similarity_score": case.get("similarity", 0.0),
+            "outcome": case.get("outcome", "")
+        } for case in similar_cases]
+
+    def _generate_default_explanation(
+        self,
+        diagnosis: str,
+        expert_opinions: List[ExpertOpinion],
+        conflict_resolution: Optional[ConflictResolution]
+    ) -> str:
+        """生成默认诊断解释（当LLM不可用时）"""
+        explanations = []
+
+        # 专家共识
+        diagnoses = [op.diagnosis for op in expert_opinions]
+        diagnosis_counts = {d: diagnoses.count(d) for d in set(diagnoses)}
+
+        if len(diagnosis_counts) == 1:
+            explanations.append(f"所有{len(expert_opinions)}个专家一致诊断为{diagnosis}。")
+        else:
+            explanations.append(f"{diagnosis_counts.get(diagnosis, 0)}/{len(expert_opinions)}个专家支持{diagnosis}诊断。")
+
+        # 置信度
+        avg_confidence = sum(op.confidence for op in expert_opinions) / len(expert_opinions)
+        explanations.append(f"平均置信度: {avg_confidence:.1%}")
+
+        # 冲突解决
+        if conflict_resolution:
+            explanations.append(f"通过{conflict_resolution.resolution_method}解决了专家意见分歧。")
+
+        return " ".join(explanations)
+
+    def _extract_key_biomarkers(self, expert_opinions: List[ExpertOpinion]) -> List[Dict[str, Any]]:
+        """从专家意见中提取关键生物标志物"""
+        biomarkers = []
+        for opinion in expert_opinions:
+            for feature in opinion.top_features[:3]:  # 每个专家取前3个特征
+                biomarkers.append({
+                    "name": feature.feature_name,
+                    "importance_score": feature.importance_score,
+                    "direction": feature.direction,
+                    "omics_type": opinion.omics_type,
+                    "biological_meaning": feature.biological_meaning
+                })
+
+        # 按重要性排序并去重
+        biomarkers.sort(key=lambda x: x["importance_score"], reverse=True)
+        unique_biomarkers = []
+        seen_names = set()
+        for bm in biomarkers:
+            if bm["name"] not in seen_names:
+                unique_biomarkers.append(bm)
+                seen_names.add(bm["name"])
+
+        return unique_biomarkers[:10]  # 返回前10个
+
+    def _extract_references(self, rag_context: Optional[Dict]) -> List[Dict[str, Any]]:
+        """从RAG上下文提取参考文献"""
+        if not rag_context:
+            return []
+
+        # Handle both string (formatted context) and dict (raw data) types
+        if isinstance(rag_context, str):
+            # Formatted markdown string from debate system - no structured data to extract
+            return []
+
+        documents = rag_context.get("documents", [])
+        return [{
+            "title": doc.get("title", "Unknown"),
+            "source": doc.get("source", "Unknown"),
+            "url": doc.get("url", ""),
+            "relevance": doc.get("score", 0.0)
+        } for doc in documents]
 
     def _extract_rag_citations(self, rag_context: str) -> List[str]:
         """Extract citations from RAG context."""

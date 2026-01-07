@@ -146,6 +146,11 @@ class ProteomeExpert(BaseExpert):
         predictions = self.model_.predict(X_aligned)
         probabilities = self.model_.predict_proba(X_aligned)
 
+        # Initialize SHAP explainer if not available (e.g., after loading from pickle)
+        if self.explainer_ is None:
+            print(f"  Initializing SHAP explainer for {self.__class__.__name__}...")
+            self.explainer_ = shap.TreeExplainer(self.model_)
+
         # Calculate SHAP values for explanations
         shap_values = self.explainer_.shap_values(X_aligned)
 
@@ -156,12 +161,20 @@ class ProteomeExpert(BaseExpert):
             probability = probabilities[i, list(self.classes_).index(diagnosis)]
 
             # Get SHAP values for this sample
+            # Handle different SHAP value formats:
+            # - New versions: 3D array (n_samples, n_features, n_classes)
+            # - Old versions: list of 2D arrays
+            # - Binary: 2D array (n_samples, n_features)
             if isinstance(shap_values, list):
-                # Multi-class: get SHAP for predicted class
+                # Old multi-class format: list of arrays
                 class_idx = list(self.classes_).index(diagnosis)
                 sample_shap = shap_values[class_idx][i]
+            elif hasattr(shap_values, 'ndim') and shap_values.ndim == 3:
+                # New multi-class format: 3D array
+                class_idx = list(self.classes_).index(diagnosis)
+                sample_shap = shap_values[i, :, class_idx]
             else:
-                # Binary: use SHAP values directly
+                # Binary or 2D format
                 sample_shap = shap_values[i]
 
             # Calculate confidence

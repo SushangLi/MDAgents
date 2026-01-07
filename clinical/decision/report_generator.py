@@ -82,15 +82,16 @@ class ReportGenerator:
         if diagnosis_result.conflict_resolution:
             sections.append(self._generate_conflict_resolution_section(diagnosis_result))
 
-        # Differential Diagnoses
-        if diagnosis_result.differential_diagnoses:
+        # Differential Diagnoses (if available in metadata)
+        differential_diagnoses = diagnosis_result.metadata.get('differential_diagnoses', [])
+        if differential_diagnoses:
             sections.append(self._generate_differential_diagnoses_section(diagnosis_result))
 
         # Clinical Recommendations
         sections.append(self._generate_recommendations_section(diagnosis_result))
 
-        # References and Evidence
-        if diagnosis_result.rag_citations or diagnosis_result.cag_similar_cases:
+        # References and Evidence (if available)
+        if diagnosis_result.references or diagnosis_result.conflict_resolution:
             sections.append(self._generate_references_section(diagnosis_result))
 
         # Limitations and Follow-up
@@ -169,8 +170,9 @@ class ReportGenerator:
 
         if diagnosis_result.conflict_resolution:
             lines.append(f"- **Conflict Resolution**: {diagnosis_result.conflict_resolution.resolution_method}")
-            if diagnosis_result.conflict_resolution.debate_rounds > 0:
-                lines.append(f"- **Debate Rounds**: {diagnosis_result.conflict_resolution.debate_rounds}")
+            debate_rounds = diagnosis_result.metadata.get('debate_rounds', 0)
+            if debate_rounds > 0:
+                lines.append(f"- **Debate Rounds**: {debate_rounds}")
         else:
             lines.append("- **Conflict Resolution**: Not required (consensus achieved)")
 
@@ -212,7 +214,7 @@ class ReportGenerator:
                 for feature in data['top_features']:
                     lines.append(
                         f"- {feature.feature_name}: {feature.direction}regulated "
-                        f"(importance: {feature.importance:.3f})"
+                        f"(importance: {feature.importance_score:.3f})"
                     )
                 lines.append("")
 
@@ -225,11 +227,16 @@ class ReportGenerator:
         lines.append("## Diagnostic Rationale")
         lines.append("")
 
-        if diagnosis_result.reasoning_chain:
+        # Try to get reasoning_chain from metadata (if available)
+        reasoning_chain = diagnosis_result.metadata.get('reasoning_chain', [])
+
+        if reasoning_chain and isinstance(reasoning_chain, list):
             lines.append("### Reasoning Chain")
             lines.append("")
-            for i, step in enumerate(diagnosis_result.reasoning_chain, 1):
+            for i, step in enumerate(reasoning_chain, 1):
                 lines.append(f"{i}. {step}")
+        elif diagnosis_result.explanation:
+            lines.append(diagnosis_result.explanation)
         else:
             lines.append("Diagnosis based on multi-expert consensus and biomarker analysis.")
 
@@ -299,18 +306,22 @@ class ReportGenerator:
 
         resolution = diagnosis_result.conflict_resolution
 
-        lines.append(f"**Conflict Types**: {', '.join(resolution.conflict_types)}")
+        lines.append(f"**Conflict Types**: {', '.join(resolution.conflicts_detected)}")
         lines.append(f"**Resolution Method**: {resolution.resolution_method}")
-        lines.append(f"**Debate Rounds**: {resolution.debate_rounds}")
-        lines.append(f"**RAG Used**: {'Yes' if resolution.rag_used else 'No'}")
-        lines.append(f"**CAG Used**: {'Yes' if resolution.cag_used else 'No'}")
+
+        debate_rounds = diagnosis_result.metadata.get('debate_rounds', 0)
+        lines.append(f"**Debate Rounds**: {debate_rounds}")
+
+        rag_used = diagnosis_result.metadata.get('rag_used', False)
+        cag_used = diagnosis_result.metadata.get('cag_used', False)
+        lines.append(f"**RAG Used**: {'Yes' if rag_used else 'No'}")
+        lines.append(f"**CAG Used**: {'Yes' if cag_used else 'No'}")
         lines.append("")
 
-        if resolution.final_reasoning:
-            lines.append("**Final Reasoning**:")
+        if resolution.cmo_reasoning:
+            lines.append("**CMO Reasoning**:")
             lines.append("")
-            for i, reason in enumerate(resolution.final_reasoning, 1):
-                lines.append(f"{i}. {reason}")
+            lines.append(resolution.cmo_reasoning)
 
         return "\n".join(lines)
 
@@ -321,7 +332,8 @@ class ReportGenerator:
         lines.append("## Differential Diagnoses")
         lines.append("")
 
-        for diff_dx in diagnosis_result.differential_diagnoses:
+        differential_diagnoses = diagnosis_result.metadata.get('differential_diagnoses', [])
+        for diff_dx in differential_diagnoses:
             lines.append(f"### {diff_dx.get('diagnosis', 'Unknown')}")
             lines.append("")
             lines.append(f"**Probability**: {diff_dx.get('probability', 0):.1%}")
@@ -338,8 +350,8 @@ class ReportGenerator:
         lines.append("## Clinical Recommendations")
         lines.append("")
 
-        if diagnosis_result.recommendations:
-            for i, rec in enumerate(diagnosis_result.recommendations, 1):
+        if diagnosis_result.clinical_recommendations:
+            for i, rec in enumerate(diagnosis_result.clinical_recommendations, 1):
                 lines.append(f"{i}. {rec}")
         else:
             lines.append("1. Follow standard treatment protocols")
@@ -355,20 +367,29 @@ class ReportGenerator:
         lines.append("## References and Evidence")
         lines.append("")
 
-        # RAG citations
-        if diagnosis_result.rag_citations:
+        # References from diagnosis_result.references
+        if diagnosis_result.references:
             lines.append("### Supporting Medical Literature")
             lines.append("")
-            for i, citation in enumerate(diagnosis_result.rag_citations, 1):
-                lines.append(f"{i}. {citation}")
+            for i, ref in enumerate(diagnosis_result.references, 1):
+                title = ref.get('title', 'Unknown')
+                source = ref.get('source', 'Unknown')
+                url = ref.get('url', '')
+                if url:
+                    lines.append(f"{i}. **{title}** - {source} ([link]({url}))")
+                else:
+                    lines.append(f"{i}. **{title}** - {source}")
             lines.append("")
 
-        # CAG similar cases
-        if diagnosis_result.cag_similar_cases:
+        # CAG similar cases from conflict_resolution
+        if diagnosis_result.conflict_resolution and diagnosis_result.conflict_resolution.cag_cases:
             lines.append("### Similar Historical Cases")
             lines.append("")
-            for i, case in enumerate(diagnosis_result.cag_similar_cases, 1):
-                lines.append(f"{i}. {case}")
+            for i, case in enumerate(diagnosis_result.conflict_resolution.cag_cases, 1):
+                case_id = case.get('case_id', 'Unknown')
+                case_diagnosis = case.get('diagnosis', 'N/A')
+                similarity = case.get('similarity_score', 0.0)
+                lines.append(f"{i}. Case {case_id}: {case_diagnosis} (similarity: {similarity:.1%})")
 
         return "\n".join(lines)
 

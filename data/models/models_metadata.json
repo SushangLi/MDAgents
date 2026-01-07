@@ -1,0 +1,71 @@
+{
+  "microbiome_expert": [
+    {
+      "expert_name": "microbiome_expert",
+      "omics_type": "microbiome",
+      "version": "20260106_193046",
+      "filepath": "data/models/microbiome_expert_v20260106_193046.pkl",
+      "saved_at": "2026-01-06T19:30:46.415453",
+      "notes": "Trained on 72 samples with obvious disease features",
+      "model_metadata": {
+        "expert_name": "microbiome_expert",
+        "omics_type": "microbiome",
+        "model_version": "1.0.0",
+        "is_fitted": true,
+        "n_features": 8,
+        "classes": [
+          "Periodontitis",
+          "Diabetes",
+          "Healthy"
+        ],
+        "model_type": "RandomForestClassifier"
+      }
+    }
+  ],
+  "metabolome_expert": [
+    {
+      "expert_name": "metabolome_expert",
+      "omics_type": "metabolome",
+      "version": "20260106_193046",
+      "filepath": "data/models/metabolome_expert_v20260106_193046.pkl",
+      "saved_at": "2026-01-06T19:30:46.527776",
+      "notes": "Trained on 72 samples with obvious disease features",
+      "model_metadata": {
+        "expert_name": "metabolome_expert",
+        "omics_type": "metabolome",
+        "model_version": "1.0.0",
+        "is_fitted": true,
+        "n_features": 7,
+        "classes": [
+          "Periodontitis",
+          "Diabetes",
+          "Healthy"
+        ],
+        "model_type": "XGBClassifier"
+      }
+    }
+  ],
+  "proteome_expert": [
+    {
+      "expert_name": "proteome_expert",
+      "omics_type": "proteome",
+      "version": "20260106_193046",
+      "filepath": "data/models/proteome_expert_v20260106_193046.pkl",
+      "saved_at": "2026-01-06T19:30:46.573976",
+      "notes": "Trained on 72 samples with obvious disease features",
+      "model_metadata": {
+        "expert_name": "proteome_expert",
+        "omics_type": "proteome",
+        "model_version": "1.0.0",
+        "is_fitted": true,
+        "n_features": 7,
+        "classes": [
+          "Periodontitis",
+          "Diabetes",
+          "Healthy"
+        ],
+        "model_type": "RandomForestClassifier"
+      }
+    }
+  ]
+}

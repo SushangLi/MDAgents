@@ -162,10 +162,22 @@ class MetabolomeExpert(BaseExpert):
         # Ensure features are in correct order
         X_aligned = X[self.feature_names_]
 
+        # Reinitialize label encoder if not available (e.g., after loading from old pickle)
+        if not hasattr(self, 'label_encoder_') or self.label_encoder_ is None:
+            print(f"  Initializing label encoder for {self.__class__.__name__}...")
+            from sklearn.preprocessing import LabelEncoder
+            self.label_encoder_ = LabelEncoder()
+            self.label_encoder_.classes_ = self.classes_
+
         # Get predictions and probabilities
         predictions_encoded = self.model_.predict(X_aligned)
         predictions = self.label_encoder_.inverse_transform(predictions_encoded)
         probabilities = self.model_.predict_proba(X_aligned)
+
+        # Initialize SHAP explainer if not available (e.g., after loading from pickle)
+        if self.explainer_ is None:
+            print(f"  Initializing SHAP explainer for {self.__class__.__name__}...")
+            self.explainer_ = shap.TreeExplainer(self.model_)
 
         # Calculate SHAP values for explanations
         shap_values = self.explainer_.shap_values(X_aligned)
@@ -178,11 +190,18 @@ class MetabolomeExpert(BaseExpert):
             probability = probabilities[i, class_idx]
 
             # Get SHAP values for this sample
+            # Handle different SHAP value formats:
+            # - New versions: 3D array (n_samples, n_features, n_classes)
+            # - Old versions: list of 2D arrays
+            # - Binary: 2D array (n_samples, n_features)
             if isinstance(shap_values, list):
-                # Multi-class: get SHAP for predicted class
+                # Old multi-class format: list of arrays
                 sample_shap = shap_values[class_idx][i]
+            elif hasattr(shap_values, 'ndim') and shap_values.ndim == 3:
+                # New multi-class format: 3D array
+                sample_shap = shap_values[i, :, class_idx]
             else:
-                # Binary: use SHAP values directly
+                # Binary or 2D format
                 sample_shap = shap_values[i]
 
             # Calculate confidence
